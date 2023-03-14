@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import { ButtonProps } from "./types";
 
-export const Button = styled.button`
-  background-color: #378edc;
-  width: 100%;
-  padding: 2rem;
-  padding: 1rem 0;
+export const Button = styled.button<ButtonProps>`
+  background-color: ${({ background = "#378EDC" }) => background};
+  width: fit-content;
+  height: fit-content;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  color: #ffffff;
-  border: none;
+  color: ${({ color = "#ffffff" }) => color};
+  border: ${({ border = "none" }) => border};
   transition: all ease 0.2s;
 
   &:hover {

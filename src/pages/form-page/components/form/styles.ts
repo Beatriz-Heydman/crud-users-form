@@ -12,4 +12,9 @@ export const FormContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   justify-content: space-between;
+  z-index: 2;
+
+  .create_user_button {
+    width: 100%;
+  }
 `;

@@ -7,7 +7,7 @@ export function Input({ label, ...inputProps }: InputProps) {
     <Flex
       direction="column"
       alignItems="flex-start"
-      gap="0.625rem"
+      gap={label ? "0.625rem" : "0"}
       style={{ width: "100%" }}
     >
       <StyledLabel>{label}</StyledLabel>

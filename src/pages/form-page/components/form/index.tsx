@@ -29,7 +29,7 @@ export function Form() {
         setIsLoadingPostUser(true);
         await axios.post(route, { name, surname, email });
 
-        navigate("/lista-usuarios");
+        navigate("/");
       } catch (error) {
         console.error("Não foi possivel criar usuario", error);
       } finally {
@@ -68,7 +68,11 @@ export function Form() {
         />
       </Flex>
 
-      <Button disabled={isLoadingPostUser} onClick={addUser}>
+      <Button
+        disabled={isLoadingPostUser}
+        onClick={addUser}
+        className="create_user_button"
+      >
         {isLoadingPostUser ? "Carregando..." : "Enviar"}
       </Button>
     </FormContainer>

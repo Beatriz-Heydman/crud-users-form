@@ -6,8 +6,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PageForm />} path="/" />
-        <Route element={<UsersPage />} path="/lista-usuarios" />
+        <Route element={<PageForm />} path="/new-user" />
+        <Route element={<UsersPage />} path="/" />
       </Routes>
     </BrowserRouter>
   );
