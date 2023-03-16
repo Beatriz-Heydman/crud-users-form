@@ -28,7 +28,8 @@ export const UserCardContainer = styled.div`
     justify-content: center;
   }
 
-  .container.icons {
+  .container_icons {
     width: 100%;
+    cursor: pointer;
   }
 `;

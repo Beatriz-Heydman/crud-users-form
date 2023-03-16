@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/button/styles";
 import { Flex } from "../../../../components/flex/styles";
 import { Input } from "../../../../components/input";
+import { Modal } from "../../../../components/modal";
 import { Text } from "../../../../components/text/styles";
 import { UserCard } from "../user-card";
 
@@ -24,6 +25,21 @@ export function UsersPageContent() {
 
   const [isLoadingUser, setIsLoadingUsers] = useState(false);
 
+  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+
+  const [isOpenRemoveModal, setIsOpenRemoveModal] = useState(false);
+
+  const defaultValueUser: User = {
+    email: "",
+    id: 0,
+    name: "",
+    surname: "",
+  };
+
+  const [deletedUser, setDeletedUser] = useState<User>(defaultValueUser);
+
+  const [editedUser, setEditerUser] = useState<User>(defaultValueUser);
+
   async function getUser() {
     setIsLoadingUsers(true);
 
@@ -37,16 +53,154 @@ export function UsersPageContent() {
     }
   }
 
+  async function removeUser(id: number) {
+    try {
+      await axios.delete(`http://localhost:3001/users/${id}`);
+      setIsOpenRemoveModal(false);
+
+      const newUsers = users.filter((user) => user.id !== deletedUser?.id);
+
+      setUsers(newUsers);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateUser(id: number) {
+    try {
+      await axios.put(`http://localhost:3001/users/${id}`, editedUser);
+      setIsOpenEditModal(false);
+
+      const newUsers = users.map((user) => {
+        if (user.id === editedUser.id) {
+          return editedUser;
+        } else {
+          return user;
+        }
+      });
+
+      setUsers(newUsers);
+    } catch (error) {}
+  }
+
   useEffect(() => {
     getUser();
   }, []);
 
   return (
     <UsersPageContentContainer>
+      <Modal
+        isOpen={isOpenEditModal}
+        onClose={() => {
+          setIsOpenEditModal(false);
+        }}
+      >
+        <Flex
+          className="container_edit_user_modal"
+          gap="1rem"
+          direction="column"
+          justifyContent="space-between"
+          alignItems="flex-start"
+        >
+          <Text color="#378EDC" fontSize="2rem" fontWeight="600">
+            Editar usuário
+          </Text>
+          <Input
+            label="Nome"
+            value={editedUser.name}
+            onChange={(event) => {
+              const inputNameValue = event.currentTarget.value;
+
+              setEditerUser({
+                ...editedUser,
+                name: inputNameValue,
+              });
+            }}
+          />
+          <Input
+            label="Sobrenome"
+            value={editedUser.surname}
+            onChange={(event) => {
+              const inputNameValue = event.currentTarget.value;
+
+              setEditerUser({
+                ...editedUser,
+                surname: inputNameValue,
+              });
+            }}
+          />
+          <Input
+            label="Email"
+            value={editedUser.email}
+            onChange={(event) => {
+              const inputNameValue = event.currentTarget.value;
+
+              setEditerUser({
+                ...editedUser,
+                email: inputNameValue,
+              });
+            }}
+          />
+          <Button
+            className="send_button_edit_user"
+            onClick={() => {
+              updateUser(editedUser.id);
+            }}
+          >
+            Enviar
+          </Button>
+        </Flex>
+      </Modal>
+
+      <Modal
+        isOpen={isOpenRemoveModal}
+        onClose={() => {
+          setIsOpenRemoveModal(false);
+        }}
+      >
+        <Flex
+          className="container_remove_user_modal"
+          gap="1rem"
+          direction="column"
+          alignItems="flex-start"
+        >
+          <Text color="#FF3A3A" fontSize="2rem" fontWeight="600">
+            Excluir usuário
+          </Text>
+          <Text color="#8A8A8A" fontSize="1.125rem" fontWeight="400">
+            Tem certeza que deseja excluir{" "}
+            <Text
+              fontWeight="500"
+              color="#8A8A8A"
+              style={{ textDecoration: "underline" }}
+            >
+              {`${deletedUser?.name} ${deletedUser?.surname}`}
+            </Text>
+            ?
+          </Text>
+          <Button
+            className="remove_button_user"
+            background="#FF3A3A"
+            onClick={() => {
+              if (deletedUser) {
+                removeUser(deletedUser?.id);
+              }
+            }}
+          >
+            Excluir
+          </Button>
+        </Flex>
+      </Modal>
+
       <Flex justifyContent="space-between">
         <Flex gap="1rem" alignItems="center">
-          <Input placeholder="Pesquisar usuário" style={{ width: "350px" }} />
-          <Button>Pesquisar</Button>
+          <Input
+            placeholder="Pesquisar usuário"
+            style={{ width: "350px" }}
+            onChange={(event) => {
+              console.log(event.currentTarget.value);
+            }}
+          />
         </Flex>
         <Button
           background="#ffffff"
@@ -79,10 +233,12 @@ export function UsersPageContent() {
             surname={user.surname}
             email={user.email}
             onClickEdit={() => {
-              console.log("eai mano");
+              setEditerUser(user);
+              setIsOpenEditModal(true);
             }}
             onClickRemove={() => {
-              console.log("loguei");
+              setDeletedUser(user);
+              setIsOpenRemoveModal(true);
             }}
           />
         ))
