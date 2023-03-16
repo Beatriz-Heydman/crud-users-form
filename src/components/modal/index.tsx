@@ -1,4 +1,7 @@
+//styles
 import { Overlay } from "./styles";
+
+//types
 import { ModalProps } from "./types";
 
 export function Modal({ children, isOpen, onClose }: ModalProps) {
@@ -7,8 +10,9 @@ export function Modal({ children, isOpen, onClose }: ModalProps) {
       className="overlay"
       isOpen={isOpen}
       onClick={(event) => {
-        // Verifica se o elemento clicado é igual ao overlay
-        if (event.target === event.currentTarget) {
+        const overlayElement = event.currentTarget;
+
+        if (event.target === overlayElement) {
           onClose();
         }
       }}

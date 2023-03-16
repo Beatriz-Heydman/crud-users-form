@@ -14,6 +14,8 @@ import { UserCard } from "../user-card";
 
 //styles
 import { UsersPageContentContainer } from "./styles";
+
+//types
 import { User } from "./types";
 
 export function UsersPageContent() {

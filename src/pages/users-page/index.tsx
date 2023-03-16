@@ -1,7 +1,10 @@
+//components
 import { HeaderUsersPage } from "./components/header/styles";
-import { UsersPageContainer } from "./styles";
 import { Text } from "../../components/text/styles";
 import { UsersPageContent } from "./components/users-page-content";
+
+//styles
+import { UsersPageContainer } from "./styles";
 
 export function UsersPage() {
   return (
