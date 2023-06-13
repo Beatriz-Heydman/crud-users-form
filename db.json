@@ -1,3 +1,16 @@
 {
-  "users": []
+  "users": [
+    {
+      "name": "rick",
+      "surname": "tet",
+      "email": "rickson.patrick13@gmail.com",
+      "id": 1
+    },
+    {
+      "name": "teste",
+      "surname": "teste",
+      "email": "twetw",
+      "id": 2
+    }
+  ]
 }

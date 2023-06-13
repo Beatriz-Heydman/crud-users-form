@@ -31,6 +31,8 @@ export function UsersPageContent() {
 
   const [isOpenRemoveModal, setIsOpenRemoveModal] = useState(false);
 
+  const [inputValue, setInputValue] = useState("");
+
   const defaultValueUser: User = {
     email: "",
     id: 0,
@@ -40,7 +42,7 @@ export function UsersPageContent() {
 
   const [deletedUser, setDeletedUser] = useState<User>(defaultValueUser);
 
-  const [editedUser, setEditerUser] = useState<User>(defaultValueUser);
+  const [editedUser, setEditedUser] = useState<User>(defaultValueUser);
 
   async function getUser() {
     setIsLoadingUsers(true);
@@ -89,6 +91,12 @@ export function UsersPageContent() {
     getUser();
   }, []);
 
+  const filteredUsers = users.filter((user) => {
+    const fullName = `${user.name} ${user.surname}`;
+
+    return fullName.includes(inputValue);
+  });
+
   return (
     <UsersPageContentContainer>
       <Modal
@@ -113,7 +121,7 @@ export function UsersPageContent() {
             onChange={(event) => {
               const inputNameValue = event.currentTarget.value;
 
-              setEditerUser({
+              setEditedUser({
                 ...editedUser,
                 name: inputNameValue,
               });
@@ -125,7 +133,7 @@ export function UsersPageContent() {
             onChange={(event) => {
               const inputNameValue = event.currentTarget.value;
 
-              setEditerUser({
+              setEditedUser({
                 ...editedUser,
                 surname: inputNameValue,
               });
@@ -137,7 +145,7 @@ export function UsersPageContent() {
             onChange={(event) => {
               const inputNameValue = event.currentTarget.value;
 
-              setEditerUser({
+              setEditedUser({
                 ...editedUser,
                 email: inputNameValue,
               });
@@ -200,7 +208,8 @@ export function UsersPageContent() {
             placeholder="Pesquisar usuário"
             style={{ width: "350px" }}
             onChange={(event) => {
-              console.log(event.currentTarget.value);
+              const value = event.currentTarget.value;
+              setInputValue(value);
             }}
           />
         </Flex>
@@ -228,14 +237,14 @@ export function UsersPageContent() {
           <Text>Carregando...</Text>
         </Flex>
       ) : (
-        users.map((user, index) => (
+        filteredUsers.map((user, index) => (
           <UserCard
             key={index}
             name={user.name}
             surname={user.surname}
             email={user.email}
             onClickEdit={() => {
-              setEditerUser(user);
+              setEditedUser(user);
               setIsOpenEditModal(true);
             }}
             onClickRemove={() => {
