@@ -1,15 +1,9 @@
 {
   "users": [
     {
-      "name": "rick",
-      "surname": "tet",
-      "email": "rickson.patrick13@gmail.com",
-      "id": 1
-    },
-    {
-      "name": "teste",
-      "surname": "teste",
-      "email": "twetw",
+      "name": "Teste",
+      "surname": "1",
+      "email": "teste1@gmail.com",
       "id": 2
     }
   ]
