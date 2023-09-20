@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+## Tecnologias 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div >
+   
+<img src="https://www.offidocs.com/images/logohtmlhtml5.jpg" width="52"/>
+<img src="https://gremmedia.hu/storage/app/uploads/public/5eb/e9a/f22/5ebe9af2215a9357125656.png" width="52"/>
+<img src="https://unity.voximplant.com/70b5435d958e0eedb7901b2f99fb92a0.png" width="52"/>
+<img src="https://phyloworks.org/images/gscholar.png" width="52"/>
+<img src="https://digipa.tech/wp-content/themes/new-magic-website-theme/img/services/it-consulting/typescript-logo.png" width="52"/>
+<img src="https://lens-storage.storage.googleapis.com/png/a81e5e5db95a4ef69460c86a940e3037" width="52"/>
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
+### Sobre o projeto
 
-### `npm start`
+Esta é uma aplicação **CRUD (create, read, update and delete)** de usuários, usando uma `API` fake do `JSON-server` para gerenciar os dados.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Demonstração
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### Como executar o projeto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone o projeto 
+2. Instale as dependências usando o comando 
+```shell
+npm install
+```
+3. Inicie a API usando o comando 
+```shell
+json-server --watch db.json --port 3001
+```
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Execute o projeto com o comando 
+```shell
+npm start
+```
