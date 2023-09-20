@@ -1,4 +1,7 @@
+//Libs
 import styled from "styled-components";
+
+//Types
 import { ButtonProps } from "./types";
 
 export const Button = styled.button<ButtonProps>`
@@ -14,5 +17,9 @@ export const Button = styled.button<ButtonProps>`
 
   &:hover {
     filter: brightness(1.1);
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `;

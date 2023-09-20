@@ -9,18 +9,30 @@ export const UsersPageContentContainer = styled.div`
   padding: 2rem;
   gap: 2rem;
 
-  .container_edit_user_modal {
-    width: 400px;
+  .edit_user_modal_container {
+    width: 100%;
 
     .send_button_edit_user {
       width: 100%;
     }
   }
 
-  .container_remove_user_modal {
-    width: 300px;
+  .remove_user_modal_container {
+    width: 100%;
     .remove_button_user {
       width: 100%;
+    }
+  }
+
+  .search_content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
     }
   }
 `;

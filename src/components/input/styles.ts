@@ -1,3 +1,4 @@
+//Libs
 import styled from "styled-components";
 
 export const StyledInput = styled.input`
@@ -11,6 +12,10 @@ export const StyledInput = styled.input`
 
   &:focus {
     outline: 1px solid #378edc;
+  }
+
+  @media (max-width: 600px) {
+    min-width: 100%;
   }
 `;
 

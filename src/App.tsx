@@ -1,4 +1,7 @@
+//Routes
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+//Pages
 import { PageForm } from "./pages/form-page";
 import { UsersPage } from "./pages/users-page";
 

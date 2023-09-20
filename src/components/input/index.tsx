@@ -1,8 +1,10 @@
-//styles
+//Components
 import { Flex } from "../flex/styles";
+
+//Styles
 import { StyledInput, StyledLabel } from "./styles";
 
-//type
+//Types
 import { InputProps } from "./types";
 
 export function Input({ label, ...inputProps }: InputProps) {

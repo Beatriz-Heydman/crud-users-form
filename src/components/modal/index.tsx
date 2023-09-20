@@ -1,4 +1,4 @@
-//styles
+//Styles
 import { Overlay } from "./styles";
 
 //types

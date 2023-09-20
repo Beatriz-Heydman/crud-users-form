@@ -1,3 +1,4 @@
+//Libs
 import styled from "styled-components";
 
 type OverlayProps = {
@@ -16,6 +17,7 @@ export const Overlay = styled.div<OverlayProps>`
   transition: all ease 0.2s;
 
   .modal_content {
+    width: fit-content;
     background-color: #ffffff;
     width: auto;
     height: auto;
@@ -23,5 +25,6 @@ export const Overlay = styled.div<OverlayProps>`
     border: 1px solid #e0e0e0;
     border-radius: 0.5rem;
     padding: 2rem;
+    width: min(500px, 90%);
   }
 `;

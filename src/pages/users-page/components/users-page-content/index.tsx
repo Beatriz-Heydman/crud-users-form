@@ -106,7 +106,7 @@ export function UsersPageContent() {
         }}
       >
         <Flex
-          className="container_edit_user_modal"
+          className="edit_user_modal_container"
           gap="1rem"
           direction="column"
           justifyContent="space-between"
@@ -169,7 +169,7 @@ export function UsersPageContent() {
         }}
       >
         <Flex
-          className="container_remove_user_modal"
+          className="remove_user_modal_container"
           gap="1rem"
           direction="column"
           alignItems="flex-start"
@@ -202,17 +202,14 @@ export function UsersPageContent() {
         </Flex>
       </Modal>
 
-      <Flex justifyContent="space-between">
-        <Flex gap="1rem" alignItems="center">
-          <Input
-            placeholder="Pesquisar usuário"
-            style={{ width: "350px" }}
-            onChange={(event) => {
-              const value = event.currentTarget.value;
-              setInputValue(value);
-            }}
-          />
-        </Flex>
+      <div className="search_content">
+        <Input
+          placeholder="Pesquisar usuário"
+          onChange={(event) => {
+            const value = event.currentTarget.value;
+            setInputValue(value);
+          }}
+        />
         <Button
           background="#ffffff"
           border="1px solid #378EDC"
@@ -226,7 +223,7 @@ export function UsersPageContent() {
             Adicionar usuário
           </Flex>
         </Button>
-      </Flex>
+      </div>
 
       {isLoadingUser ? (
         <Flex

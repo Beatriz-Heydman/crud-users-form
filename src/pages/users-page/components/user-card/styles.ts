@@ -19,8 +19,8 @@ export const UserCardContainer = styled.div`
   }
 
   .container_avatar {
-    width: 54px;
-    height: 54px;
+    min-width: 54px;
+    min-height: 54px;
     background-color: #b9abab;
     border-radius: 50%;
     display: flex;
