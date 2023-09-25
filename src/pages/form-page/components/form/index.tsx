@@ -17,6 +17,10 @@ export function Form() {
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
 
+  const [hasNoName, setHasNoName] = useState(false);
+  const [hasNoSurname, setHasNoSurname] = useState(false);
+  const [hasNoEmail, setHasNoEmail] = useState(false);
+
   const [isLoadingPostUser, setIsLoadingPostUser] = useState(false);
 
   const route = "http://localhost:3001/users";
@@ -24,6 +28,16 @@ export function Form() {
   const navigate = useNavigate();
 
   async function addUser() {
+    if (name === "") {
+      setHasNoName(true);
+    }
+    if (surname === "") {
+      setHasNoSurname(true);
+    }
+    if (email === "") {
+      setHasNoEmail(true);
+      return;
+    }
     if (name && surname && email) {
       try {
         setIsLoadingPostUser(true);
@@ -53,19 +67,68 @@ export function Form() {
         </Text>
       </Flex>
       <Flex gap="2rem" direction="column">
-        <Input
-          label="Digite seu nome"
-          onChange={(event) => setName(event.currentTarget.value)}
-        />
-        <Input
-          label="Digite seu sobrenome"
-          onChange={(event) => setSurname(event.currentTarget.value)}
-        />
-        <Input
-          type="email"
-          label="Digite seu email"
-          onChange={(event) => setEmail(event.currentTarget.value)}
-        />
+        <Flex
+          direction="column"
+          alignItems="flex-start"
+          gap="0.5rem"
+          style={{ width: "100%" }}
+        >
+          <Input
+            type="text"
+            label="Digite seu nome"
+            onChange={(event) => {
+              setName(event.currentTarget.value);
+              setHasNoName(false);
+            }}
+          />
+          {hasNoName && (
+            <Text color="red" fontSize="0.7rem">
+              Campo obrigatório
+            </Text>
+          )}
+        </Flex>
+
+        <Flex
+          direction="column"
+          alignItems="flex-start"
+          gap="0.5rem"
+          style={{ width: "100%" }}
+        >
+          <Input
+            type="text"
+            label="Digite seu sobrenome"
+            onChange={(event) => {
+              setSurname(event.currentTarget.value);
+              setHasNoSurname(false);
+            }}
+          />
+          {hasNoSurname && (
+            <Text color="red" fontSize="0.7rem">
+              Campo obrigatório
+            </Text>
+          )}
+        </Flex>
+
+        <Flex
+          direction="column"
+          alignItems="flex-start"
+          gap="0.5rem"
+          style={{ width: "100%" }}
+        >
+          <Input
+            type="email"
+            label="Digite seu email"
+            onChange={(event) => {
+              setEmail(event.currentTarget.value);
+              setHasNoEmail(false);
+            }}
+          />
+          {hasNoEmail && (
+            <Text color="red" fontSize="0.7rem">
+              Campo obrigatório
+            </Text>
+          )}
+        </Flex>
       </Flex>
 
       <Button
